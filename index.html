@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teazer Vercel Hosting</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center; 
+      padding: 50px; 
+      background-color: #121212; 
+      color: #ffffff;
+    }
+    input, button { 
+      margin: 10px; 
+      padding: 10px; 
+      background-color: #333; 
+      color: #fff; 
+      border: none; 
+      border-radius: 5px;
+    }
+    button:hover { 
+      background-color: #555;
+      cursor: pointer;
+    }
+    #site-list { 
+      margin-top: 20px; 
+    }
+    .site-item { 
+      margin: 5px 0; 
+      padding: 10px; 
+      background-color: #1e1e1e; 
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Teazer Vercel Hosting</h1>
+  <p>Kullanıcı adınızı girin ve kendi sitenizi oluşturun.</p>
+  <input type="text" id="username" placeholder="Kullanıcı Adı">
+  <button onclick="createSite()">Site Oluştur</button>  <div id="site-list"></div>  <script>
+    function createSite() {
+      const username = document.getElementById('username').value.trim();
+      if (!username) return alert('Kullanıcı adı gerekli!');
+
+      const siteList = document.getElementById('site-list');
+      const siteItem = document.createElement('div');
+      siteItem.className = 'site-item';
+      siteItem.innerHTML = `<h2><a href='/${username}/index.html' target='_blank'>${username}.teazer</a></h2>
+        <iframe src="/${username}/index.html" class="site-frame"></iframe>
+        <button onclick="editSite('${username}')">Düzenle</button>`;
+      siteList.appendChild(siteItem);
+
+      alert('Site başarıyla oluşturuldu!');
+    }
+
+    function editSite(username) {
+      const newContent = prompt('Site içeriğini düzenleyin:', '<h1>Merhaba, '+username+'</h1>');
+      if (newContent !== null) {
+        alert('Site içeriği güncellendi! (Manuel yükleyin)');
+      }
+    }
+  </script></body>
+</html>
